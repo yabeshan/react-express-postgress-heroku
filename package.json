@@ -8,9 +8,15 @@
   "main": "./server/app.js",
   "scripts": {
     "deploy": "git add . && git commit -m 'Fixing' && git push heroku master",
-    "dev": "nodemon ./server/app.js"
+    "dev": "nodemon -r esm ./server/app.js"
   },
   "author": "",
   "dependencies": {
-  }
+    "esm": "^3.2.25",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "license": "MIT"
 }

@@ -1,10 +1,14 @@
-const http = require('http')
+import express from 'express'
+
+const app = express()
 const port = process.env.PORT || 3000
 
-http.createServer((req, res) => {
-  res.writeHead(200)
-  res.end("Hello 2")
-}).listen(port, err => {
+app.get('*', (req, res)=> {
+  res.writeHead(200, {"Content-Type": "text/plain"})
+  res.end("Express")
+})
+
+app.listen(port, err => {
   if (err) {
     throw err
   }
