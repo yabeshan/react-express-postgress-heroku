@@ -1,0 +1,16 @@
+{
+  "name": "react-express-postgress-heroku",
+  "version": "0.0.0",
+  "description": "react-express-postgress-heroku",
+  "engines": {
+    "node": "12.x"
+  },
+  "main": "./server/app.js",
+  "scripts": {
+    "deploy": "git add . && git commit -m 'Fixing' && git push heroku master",
+    "dev": "nodemon ./server/app.js"
+  },
+  "author": "",
+  "dependencies": {
+  }
+}
