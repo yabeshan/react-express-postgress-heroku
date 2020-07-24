@@ -5,14 +5,14 @@
   "engines": {
     "node": "12.x"
   },
-  "main": "./server/app.js",
+  "main": "app.js",
   "scripts": {
-    "server": "nodemon -r esm ./server/app.js",
+    "server": "nodemon -r esm app.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\" ",
     "client:build": "npm run build --prefix client",
     "deploy:heroku": "git add . && git commit -m 'Fixing' && git push heroku master",
-    "server:heroku": "node -r esm ./server/app.js"
+    "server:heroku": "node -r esm app.js"
   },
   "author": "",
   "dependencies": {
