@@ -1,1 +1,1 @@
-web: node -r esm ./server/app.js
+web: npm run server:heroku

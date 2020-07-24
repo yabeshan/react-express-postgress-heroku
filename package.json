@@ -7,8 +7,10 @@
   },
   "main": "./server/app.js",
   "scripts": {
-    "deploy": "git add . && git commit -m 'Fixing' && git push heroku master",
-    "dev": "nodemon -r esm ./server/app.js"
+    "server": "nodemon -r esm ./server/app.js",
+    "client": "",
+    "deploy:heroku": "git add . && git commit -m 'Fixing' && git push heroku master",
+    "server:heroku": "node -r esm ./server/app2.js"
   },
   "author": "",
   "dependencies": {

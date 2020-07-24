@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000
 
 app.get('*', (req, res)=> {
   res.writeHead(200, {"Content-Type": "text/plain"})
-  res.end("Express localy")
+  res.end("Express heroku")
 })
 
 app.listen(port, err => {
