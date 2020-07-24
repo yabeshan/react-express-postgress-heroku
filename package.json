@@ -8,9 +8,11 @@
   "main": "./server/app.js",
   "scripts": {
     "server": "nodemon -r esm ./server/app.js",
-    "client": "",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" ",
+    "client:build": "npm run build --prefix client",
     "deploy:heroku": "git add . && git commit -m 'Fixing' && git push heroku master",
-    "server:heroku": "node -r esm ./server/app2.js"
+    "server:heroku": "node -r esm ./server/app.js"
   },
   "author": "",
   "dependencies": {
@@ -18,6 +20,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "concurrently": "^5.2.0",
     "nodemon": "^2.0.4"
   },
   "license": "MIT"
