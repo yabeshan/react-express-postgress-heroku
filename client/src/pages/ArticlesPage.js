@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useCallback } from 'react'
 import {useHistory} from 'react-router-dom'
 import {AuthContext} from '../context/AuthContext'
 import {useHttp} from '../hooks/http.hook'
@@ -6,20 +6,25 @@ import {useHttp} from '../hooks/http.hook'
 const ArticlesPage = () => {
   const history = useHistory()
   const auth = useContext(AuthContext)
-
+  const {token, userId} = useContext(AuthContext)
   const [articles, setArticles] = useState([])
   const {loading, request, error} = useHttp()
 
   const refreshArticles = async () => {
     setArticles([])
+    fetchArticles()
   }
 
-  const fetchArticles = async () => {
+  const fetchArticles = useCallback( async () => {
+    console.log('send')
     try {
-      const data = await request('/api/articles', 'GET')
+      const data = await request('/api/articles?userId='+userId, 'GET', null, {
+        Authorization: `Bearer ${token}`
+      })
+      console.log('data', data)
       setArticles(data.articles)
     } catch (e) {}
-  }
+  }, [token, request])
 
   const logoutHandler = () => {
     auth.logout()
@@ -40,7 +45,7 @@ const ArticlesPage = () => {
       {articles.length==0 && "Loading..."}
       {articles.length>0 && 
         articles.map((article, index) => 
-          <p key={index}>{article}</p>
+          <p key={index}><b>{article.title}</b><br/> {article.text}</p>
         )
       }
     </div>
