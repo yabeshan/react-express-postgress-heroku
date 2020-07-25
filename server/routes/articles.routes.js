@@ -1,7 +1,7 @@
 //2) GET /articles — требует авторизации по токену, запрос пустой, ответ — список статей. Статья — простой объект из заголовка и текста.
 
-const {Router} = require('express')
-const router = Router()
+import express from 'express'
+const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
@@ -15,4 +15,4 @@ router.get('/', async (req, res) => {
   }
 })
 
-module.exports = router
+export default router
