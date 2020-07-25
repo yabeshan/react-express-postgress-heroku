@@ -21,10 +21,9 @@ const ArticlesPage = () => {
       const data = await request('/api/articles?userId='+userId, 'GET', null, {
         Authorization: `Bearer ${token}`
       })
-      console.log('data', data)
       setArticles(data.articles)
     } catch (e) {}
-  }, [token, request])
+  }, [token, userId, request])
 
   const logoutHandler = () => {
     auth.logout()
